@@ -2,6 +2,14 @@ let input = document.getElementById('searchInput');
 input.focus();  // put the focus on the input text field.
 let submit = document.getElementById('submitButton');
 
+// Also when the enter button is pressed.
+document.addEventListener("keypress", function (e) {
+  var key = e.which || e.keyCode;
+  if (key === 13) {
+    qualifyAndSearch();
+  }
+});
+
 // When the button is clicked, send the search input data and get the results.
 submit.onclick = qualifyAndSearch;
 
