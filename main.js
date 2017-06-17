@@ -1,4 +1,3 @@
-let str = "";
 let input = document.getElementById('searchInput');
 input.focus();  // put the focus on the input text field.
 let submit = document.getElementById('submitButton');
