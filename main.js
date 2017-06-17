@@ -8,7 +8,7 @@ submit.onclick = qualifyAndSearch;
 
 function search(str) {
   // Receives search phrase string, returns json data.
-  let api = 'https://api.soundcloud.com/users/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
+  let api = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
 
   console.log("Submitting: " + api);
   fetch(api)
