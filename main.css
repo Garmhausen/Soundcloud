@@ -1,3 +1,7 @@
 #searchInput {
   outline: none;
 }
+
+#stream-player {
+  display: none;
+}
