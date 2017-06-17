@@ -6,6 +6,21 @@ let submit = document.getElementById('submitButton');
 submit.onclick = qualifyAndSearch;
 
 
+function qualifyAndSearch(event) {
+  // When the button is clicked, clean the input and send string to search().
+  console.log("Initiate search...");
+  let dirtyStrArr = input.value.split('');
+  let cleanStr = "";
+  for (let i = 0; i < dirtyStrArr.length; i++) {
+    if (dirtyStrArr[i] === " ") {
+      dirtyStrArr[i] = "_";
+    }
+    cleanStr += dirtyStrArr[i];
+  }
+  search(cleanStr);
+}
+
+
 function search(str) {
   // Receives search phrase string, returns json data.
   let api = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
