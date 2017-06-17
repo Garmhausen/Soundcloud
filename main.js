@@ -1,5 +1,9 @@
 let str = "";
-let input = document.getElementById('')
+let input = document.getElementById('searchInput');
+input.focus();  // put the focus on the input text field.
+let submit = document.getElementById('submitButton');
+// When the button is clicked, send the search input data and get the results.
+submit.onclick = qualifyAndSearch;
 
 
 function search(str) {
