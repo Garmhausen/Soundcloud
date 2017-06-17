@@ -1,9 +1,9 @@
 let input = document.getElementById('searchInput');
 input.focus();  // put the focus on the input text field.
 let submit = document.getElementById('submitButton');
+
 // When the button is clicked, send the search input data and get the results.
 submit.onclick = qualifyAndSearch;
-
 
 function qualifyAndSearch(event) {
   // When the button is clicked, clean the input and send string to search().
@@ -16,11 +16,35 @@ function qualifyAndSearch(event) {
     }
     cleanStr += dirtyStrArr[i];
   }
-  search(cleanStr);
+
+  // send the results to the function to add to the page.
+  display(searchUsers(cleanStr));
+  display(searchTracks(cleanStr));
 }
 
 
-function search(str) {
+function searchUsers(str) {
+  // Receives search phrase string, returns json data.
+  let api = 'https://api.soundcloud.com/users/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
+
+  console.log("Submitting: " + api);
+  fetch(api)
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Problem.  Code: ' + response.status);
+          return;
+        }
+
+        response.json().then(function(data) {
+          console.log(data);
+          return data;
+        })
+      }
+    )
+}
+
+function searchTracks(str) {
   // Receives search phrase string, returns json data.
   let api = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
 
