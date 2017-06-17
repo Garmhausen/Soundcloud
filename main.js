@@ -43,6 +43,15 @@ function searchUsers(str) {
             console.log("Artist: " + info[i].username);
             console.log("  URL: " + info[i].permalink_url);
             console.log("++++++++++++++++");
+
+            // make the Artist info square.
+            let markup = `
+              <div class="artist">
+                <img class="picture" src="${info[i].avatar_url}" />
+                <p class="name">${info[i].username}</p>
+              </div>
+            `
+            document.getElementById("artists").innerHTML += markup;
           }
           return;
         })
