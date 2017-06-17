@@ -38,6 +38,7 @@ function searchUsers(str) {
 
         response.json().then(function(data) {
           let info = data;
+          document.getElementById("artists").innerHTML = ""; // clear it
           for (let i = 0; i < info.length; i++) {
             console.log("++++++++++++++++");
             console.log("Artist: " + info[i].username);
@@ -74,6 +75,7 @@ function searchTracks(str) {
 
         response.json().then(function(data) {
           let info = data;
+          document.getElementById("tracks").innerHTML = ""; // clear it
           for (let i = 0; i < info.length; i++) {
             console.log("----------------");
             console.log("Song: " + info[i].title);
@@ -81,6 +83,18 @@ function searchTracks(str) {
             console.log("  WF URL: " + info[i].waveform_url);
             console.log("  Stream URL: " + info[i].stream_url);
             console.log("----------------");
+
+            // make the track info list
+            let markup = `
+              <div class="artist">
+                <img class="picture" src="${info[i].artwork_url}" />
+                <p class="title">${info[i].title}</p>
+                <button id="play${i}" name="play" value="play">play</button>
+              </div>
+            `
+            document.getElementById("tracks").innerHTML += markup;
+
+            // add the play button listener action stuff here.
           }
           return;
         })
@@ -116,3 +130,5 @@ function getUsersTracks(str) {
       }
     )
 }
+
+// Things to add: make a if/then for when folks don't have pictures.
