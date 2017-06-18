@@ -17,12 +17,21 @@ a:hover, button:hover, #submitButton:hover {
   color: white;
 }
 
+h2 {
+  text-align: center;
+}
+
+.wrapper {
+  border: 4px solid #454545;
+  margin: 40px;
+}
+
 #search {
   display: flex;
   justify-content: center;
   font-size: 3em;
   margin: 25px auto;
-
+  /*opacity: 0.8;*/
 }
 
 #transport {
