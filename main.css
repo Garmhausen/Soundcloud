@@ -59,7 +59,8 @@ header {
 }
 
 .track .picture {
-  float: right;
+  margin-right: 10px;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 530px) {
