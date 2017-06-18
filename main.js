@@ -2,7 +2,15 @@ let input = document.getElementById('searchInput');
 input.focus();  // put the focus on the input text field.
 let submit = document.getElementById('submitButton');
 
-// Also when the enter button is pressed.
+let playButtons = [];
+
+let resultsWrapper = document.getElementById('results');
+let player = document.getElementById('stream-player');
+let artists = document.getElementById('artists');
+let tracks = document.getElementById('tracks');
+
+
+//  Search when the enter button is pressed.
 document.addEventListener("keypress", function (e) {
   var key = e.which || e.keyCode;
   if (key === 13) {
@@ -10,11 +18,17 @@ document.addEventListener("keypress", function (e) {
   }
 });
 
-// When the button is clicked, send the search input data and get the results.
+// Also, when the button is clicked, search.
 submit.onclick = qualifyAndSearch;
+
+
 
 function qualifyAndSearch(event) {
   // When the button is clicked, clean the input and send string to search().
+
+  // start by making the areas for results visible.
+  resultsWrapper.style = "display: flex"
+
   console.log("Initiate search...");
   let dirtyStrArr = input.value.split('');
   let cleanStr = "";
@@ -56,8 +70,10 @@ function searchUsers(str) {
             // make the Artist info square.
             let markup = `
               <div class="artist">
-                <img class="picture" src="${info[i].avatar_url}" />
-                <p class="name">${info[i].username}</p>
+                <a href="${info[i].permalink_url}" target="_blank">
+                  <img class="picture" src="${info[i].avatar_url}" />
+                  <p class="name"><a href="${info[i].permalink_url}" target="_blank">${info[i].username}</p>
+                </a>
               </div>
             `
             document.getElementById("artists").innerHTML += markup;
@@ -84,6 +100,7 @@ function searchTracks(str) {
         response.json().then(function(data) {
           let info = data;
           document.getElementById("tracks").innerHTML = ""; // clear it
+
           for (let i = 0; i < info.length; i++) {
             console.log("----------------");
             console.log("Song: " + info[i].title);
@@ -94,21 +111,45 @@ function searchTracks(str) {
 
             // make the track info list
             let markup = `
-              <div class="artist">
-                <img class="picture" src="${info[i].artwork_url}" />
+              <div class="track">
+                <img class="picture" src="${info[i].user.avatar_url}" />
+                <button id="play${i}" name="play" value="${info[i].stream_url}">play</button>
                 <p class="title">${info[i].title}</p>
-                <button id="play${i}" name="play" value="play">play</button>
               </div>
             `
             document.getElementById("tracks").innerHTML += markup;
 
             // add the play button listener action stuff here.
+            // let playButton = document.getElementById("play" + i);
+            // playButton.onclick = playStream(playButton.value);
+            setupPlayButton(i);
+
           }
           return;
         })
       }
     )
 }
+
+function setupPlayButton(i) {
+  playButtons.push(document.getElementById("play" + i));
+  playButtons[i].onclick = function() {
+    let url = playButtons[i].value;
+    url += "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
+    player.setAttribute('src', url);
+    player.setAttribute('autoplay', true);
+
+  }
+}
+
+
+
+
+
+
+
+//  EXTRA options for when everything else is working.
+//  This isn't for MVP.
 
 function getUsersTracks(str) {
   // Receives search phrase string, returns json data.
@@ -138,5 +179,3 @@ function getUsersTracks(str) {
       }
     )
 }
-
-// Things to add: make a if/then for when folks don't have pictures.
