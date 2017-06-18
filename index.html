@@ -8,16 +8,17 @@
   </head>
   <body>
     <header>
-      <input type="text" id="searchInput" name="search" placeholder="Search SoundCloud">
-      <input type="button" id="submitButton" name="submit" value="Go!">
-    </header>
-    <main id="results">
-      <header id="transport">
-        <!-- Track player feedback and controls here -->
+      <section id="search">
+        <input type="text" id="searchInput" name="search" placeholder="Search SoundCloud">
+        <input type="button" id="submitButton" name="submit" value="Go!">
+      </section>
+      <section id="transport">
         <audio id="stream-player" controls="controls">
           Your browser does not support the <code>audio</code> element.
         </audio>
-      </header>
+      </section>
+    </header>
+    <main id="results">
       <h2>
         Artists
       </h2>
