@@ -29,7 +29,7 @@ function qualifyAndSearch(event) {
   // start by making the areas for results visible.
   resultsWrapper.style = "display: flex"
 
-  console.log("Initiate search...");
+  // console.log("Initiate search...");
   let dirtyStrArr = input.value.split('');
   let cleanStr = "";
   for (let i = 0; i < dirtyStrArr.length; i++) {
@@ -49,7 +49,7 @@ function searchUsers(str) {
   // Receives search phrase string, returns json data.
   let api = 'https://api.soundcloud.com/users/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
 
-  console.log("Submitting for users: q=" + str);
+  // console.log("Submitting for users: q=" + str);
   fetch(api)
     .then(
       function(response) {
@@ -62,10 +62,10 @@ function searchUsers(str) {
           let info = data;
           document.getElementById("artists").innerHTML = ""; // clear it
           for (let i = 0; i < info.length; i++) {
-            console.log("++++++++++++++++");
-            console.log("Artist: " + info[i].username);
-            console.log("  URL: " + info[i].permalink_url);
-            console.log("++++++++++++++++");
+            // console.log("++++++++++++++++");
+            // console.log("Artist: " + info[i].username);
+            // console.log("  URL: " + info[i].permalink_url);
+            // console.log("++++++++++++++++");
 
             // make the Artist info square.
             let markup = `
@@ -88,7 +88,7 @@ function searchTracks(str) {
   // Receives search phrase string, returns json data.
   let api = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
 
-  console.log("Submitting for tracks: q=" + str);
+  // console.log("Submitting for tracks: q=" + str);
   fetch(api)
     .then(
       function(response) {
@@ -102,12 +102,12 @@ function searchTracks(str) {
           document.getElementById("tracks").innerHTML = ""; // clear it
 
           for (let i = 0; i < info.length; i++) {
-            console.log("----------------");
-            console.log("Song: " + info[i].title);
-            console.log("  URL: " + info[i].permalink_url);
-            console.log("  WF URL: " + info[i].waveform_url);
-            console.log("  Stream URL: " + info[i].stream_url);
-            console.log("----------------");
+            // console.log("----------------");
+            // console.log("Song: " + info[i].title);
+            // console.log("  URL: " + info[i].permalink_url);
+            // console.log("  WF URL: " + info[i].waveform_url);
+            // console.log("  Stream URL: " + info[i].stream_url);
+            // console.log("----------------");
 
             // make the track info list
             let markup = `
@@ -134,6 +134,7 @@ function searchTracks(str) {
 function setupPlayButton(i) {
   playButtons.push(document.getElementById("play" + i));
   playButtons[i].onclick = function() {
+    console.log("play button " + playButtons[i].id + " was clicked");
     let url = playButtons[i].value;
     url += "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
     player.setAttribute('src', url);
