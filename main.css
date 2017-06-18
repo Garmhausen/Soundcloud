@@ -2,7 +2,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #FFFBF0;
+  background: #212121;
+  font-family: sans-serif;
+  color: #9F9D9D;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #9F9D9D;
+}
+
+a:hover {
+  color: white;
 }
 
 header {
@@ -17,7 +29,6 @@ header {
   display: none;
   flex-direction:column;
   align-items: center;
-  background: #C1DFF3;
 }
 
 #stream-player {
@@ -26,6 +37,14 @@ header {
 
 #searchInput {
   outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+#submitButton {
+  outline: none;
+  border: none;
+  border-radius: 10px;
 }
 
 #artists {
@@ -55,13 +74,20 @@ header {
 
 .track {
   display: grid;
-  grid-template-columns: 1fr 20vw 1fr;
+  grid-template-columns: 1fr 60px 1fr;
   align-items: center;
 }
 
 .track .picture {
   margin-right: 10px;
   margin-left: auto;
+}
+
+.track button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
 }
 
 @media screen and (max-width: 530px) {
