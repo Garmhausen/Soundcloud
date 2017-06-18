@@ -2,8 +2,6 @@ let input = document.getElementById('searchInput');
 input.focus();  // put the focus on the input text field.
 let submit = document.getElementById('submitButton');
 
-let playButtons = [];
-
 let resultsWrapper = document.getElementById('results');
 let player = document.getElementById('stream-player');
 let artists = document.getElementById('artists');
@@ -30,9 +28,6 @@ function qualifyAndSearch(event) {
   resultsWrapper.style = "display: flex";
   player.style = "display: block";
 
-  playButtons = []; // clear the track play button urls.
-
-  // console.log("Initiate search...");
   let dirtyStrArr = input.value.split('');
   let cleanStr = "";
   for (let i = 0; i < dirtyStrArr.length; i++) {
@@ -52,7 +47,6 @@ function searchUsers(str) {
   // Receives search phrase string, returns json data.
   let api = 'https://api.soundcloud.com/users/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + str;
 
-  // console.log("Submitting for users: q=" + str);
   fetch(api)
     .then(
       function(response) {
@@ -65,11 +59,6 @@ function searchUsers(str) {
           let info = data;
           document.getElementById("artists").innerHTML = ""; // clear it
           for (let i = 0; i < info.length; i++) {
-            // console.log("++++++++++++++++");
-            // console.log("Artist: " + info[i].username);
-            // console.log("  URL: " + info[i].permalink_url);
-            // console.log("++++++++++++++++");
-
             // make the Artist info square.
             let markup = `
               <div class="artist">
@@ -105,12 +94,6 @@ function searchTracks(str) {
           document.getElementById("tracks").innerHTML = ""; // clear it
 
           for (let i = 0; i < info.length; i++) {
-            // console.log("----------------");
-            // console.log("Song: " + info[i].title);
-            // console.log("  URL: " + info[i].permalink_url);
-            // console.log("  WF URL: " + info[i].waveform_url);
-            // console.log("  Stream URL: " + info[i].stream_url);
-            // console.log("----------------");
 
             // make the track info list
             let markup = `
@@ -122,26 +105,23 @@ function searchTracks(str) {
             `
             document.getElementById("tracks").innerHTML += markup;
 
-            setupPlayButton(i);
           }
+
+          document.getElementById("tracks").addEventListener("click", function(e) {
+	           if(e.target && e.target.nodeName == "BUTTON") {
+               let url = e.target.value;
+               url += "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
+               player.removeAttribute('src');
+               player.setAttribute('src', url);
+               player.setAttribute('autoplay', true);
+	            }
+            });
           return;
         })
       }
     )
 }
 
-function setupPlayButton(i) {
-  playButtons.push(document.getElementById("play" + i));
-  playButtons[i].onclick = function() {
-    console.log("play button " + playButtons[i].id + " was clicked");
-    let url = playButtons[i].value;
-    url += "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
-    player.removeAttribute('src');
-    player.setAttribute('src', url);
-    player.setAttribute('autoplay', true);
-
-  }
-}
 
 
 
