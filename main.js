@@ -27,7 +27,10 @@ function qualifyAndSearch(event) {
   // When the button is clicked, clean the input and send string to search().
 
   // start by making the areas for results visible.
-  resultsWrapper.style = "display: flex"
+  resultsWrapper.style = "display: flex";
+  player.style = "display: block";
+
+  playButtons = []; // clear the track play button urls.
 
   // console.log("Initiate search...");
   let dirtyStrArr = input.value.split('');
@@ -119,11 +122,7 @@ function searchTracks(str) {
             `
             document.getElementById("tracks").innerHTML += markup;
 
-            // add the play button listener action stuff here.
-            // let playButton = document.getElementById("play" + i);
-            // playButton.onclick = playStream(playButton.value);
             setupPlayButton(i);
-
           }
           return;
         })
@@ -137,6 +136,7 @@ function setupPlayButton(i) {
     console.log("play button " + playButtons[i].id + " was clicked");
     let url = playButtons[i].value;
     url += "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
+    player.removeAttribute('src');
     player.setAttribute('src', url);
     player.setAttribute('autoplay', true);
 
