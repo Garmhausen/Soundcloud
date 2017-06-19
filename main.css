@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #212121;
+  background: #777;
   font-family: sans-serif;
   color: #9F9D9D;
   box-sizing: border-box;
@@ -19,6 +19,36 @@ a:hover, button:hover, #submitButton:hover {
 
 h2 {
   text-align: center;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-weight: 200;
+}
+
+audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+opacity: 1;
+}
+
+
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-box-shadow: 2px 2px 4px 0px #454545;
+-webkit-box-shadow:  2px 2px 4px 0px #454545;
+box-shadow: 2px 2px 4px 0px #454545;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+opacity: .5;
 }
 
 .wrapper {
@@ -27,17 +57,30 @@ h2 {
 }
 
 #search {
+  position: absolute;
   display: flex;
   justify-content: center;
   font-size: 3em;
-  margin: 25px auto;
-  /*opacity: 0.8;*/
+  height: 50vh;
+  width: 100%;
+  z-index: 3;
+
+  -webkit-transition:all 1.2s ease-out;
+  -moz-transition:all 1.2s ease-out;
+  -o-transition:all 1.2s ease-out;
+  transition:all 1.2s ease-out;
 }
 
 #transport {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 150px 0 0 0;
+  opacity: 0;
+
+  -webkit-transition:all 2s ease-out;
+  -moz-transition:all 2s ease-out;
+  -o-transition:all 2s ease-out;
+  transition:all 2s ease-out;
 }
 
 #results {
@@ -51,9 +94,41 @@ h2 {
 }
 
 #searchInput {
+  align-self: flex-end;
   outline: none;
+
   border: none;
-  border-radius: 10px;
+  border-radius: 100px;
+  padding: 0 30px;
+  text-align: center;
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+  transition:all 0.5s linear;
+  -moz-box-shadow: 2px 2px 4px 0px #454545;
+  -webkit-box-shadow:  2px 2px 4px 0px #454545;
+  box-shadow: 2px 2px 4px 0px #454545;
+  -moz-border-radius:7px 7px 7px 7px ;
+  -webkit-border-radius:7px 7px 7px 7px ;
+  border-radius:7px 7px 7px 7px ;
+  opacity: 0.5;
+  /*color : transparent;
+  text-shadow : 0 0 0 #000;*/
+}
+
+#searchInput:hover {
+  -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+  -moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+  box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  transform: scale(1.05);
+  opacity: 1;
+
+}
+
+#searchInput:focus {
+  outline: none;
 }
 
 #submitButton {
@@ -82,6 +157,7 @@ h2 {
 
 #tracks {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-top: 40px;
   width: 90vw;
 
@@ -89,20 +165,20 @@ h2 {
 
 .track {
   display: grid;
-  grid-template-columns: 150px 60px 1fr;
-  align-items: center;
+  /*grid-template-columns: 150px 60px 1fr;*/
+  /*align-items: center;*/
 }
 
 .track .picture {
-  margin-right: 10px;
-  margin-left: auto;
+  /*margin-right: 10px;
+  margin-left: auto;*/
 }
 
 .track button {
-  outline: none;
+  /*outline: none;
   border: none;
   border-radius: 5px;
-  width: 40px;
+  width: 40px;*/
 }
 
 @media screen and (max-width: 530px) {
@@ -110,4 +186,10 @@ h2 {
   #artists {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  #tracks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 40px;
+    width: 90vw;
 }
