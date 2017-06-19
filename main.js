@@ -99,8 +99,8 @@ function searchTracks(str) {
             let markup = `
               <div class="track">
                 <img class="picture" src="${info[i].user.avatar_url}" />
-                <button id="play${i}" name="play" value="${info[i].stream_url}">play</button>
                 <p class="title">${info[i].title}</p>
+                <button id="play${i}" name="play" value="${info[i].stream_url}">stream</button>
               </div>
             `
             document.getElementById("tracks").innerHTML += markup;
