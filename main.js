@@ -7,6 +7,10 @@ let player = document.getElementById('stream-player');
 let artists = document.getElementById('artists');
 let tracks = document.getElementById('tracks');
 
+//  These are needed for the CSS animations
+let searchWrapper = document.getElementById('search');
+let transportWrapper = document.getElementById('transport');
+
 
 //  Search when the enter button is pressed.
 document.addEventListener("keypress", function (e) {
@@ -24,9 +28,11 @@ submit.onclick = qualifyAndSearch;
 function qualifyAndSearch(event) {
   // When the button is clicked, clean the input and send string to search().
 
-  // start by making the areas for results visible.
-  resultsWrapper.style = "display: flex";
+  // Start by making the areas for results visible.  Some animations.
+  resultsWrapper.style = "display: flex;";
   player.style = "display: block";
+  searchWrapper.style = "height: 15vh";
+
 
   let dirtyStrArr = input.value.split('');
   let cleanStr = "";
@@ -114,6 +120,7 @@ function searchTracks(str) {
                player.removeAttribute('src');
                player.setAttribute('src', url);
                player.setAttribute('autoplay', true);
+               transportWrapper.style = "opacity: 1;"; // fade animation.
 	            }
             });
           return;
