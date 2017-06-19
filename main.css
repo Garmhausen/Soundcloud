@@ -3,7 +3,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background: #777;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #D8D8D7;
   box-sizing: border-box;
 }
