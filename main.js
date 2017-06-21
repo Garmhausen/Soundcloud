@@ -20,10 +20,8 @@ document.addEventListener("keypress", function (e) {
   }
 });
 
-// Also, when the button is clicked, search.
-submit.onclick = qualifyAndSearch;
-
-
+// Enable if you want to make a button later.
+// submit.onclick = qualifyAndSearch;
 
 function qualifyAndSearch(event) {
   // When the button is clicked, clean the input and send string to search().
