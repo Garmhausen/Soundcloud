@@ -44,10 +44,10 @@ opacity: 1;
 
 audio
 {
--webkit-transition:all 0.5s linear;
--moz-transition:all 0.5s linear;
--o-transition:all 0.5s linear;
-transition:all 0.5s linear;
+-webkit-transition:all 0.2s linear;
+-moz-transition:all 0.2s linear;
+-o-transition:all 0.2s linear;
+transition:all 0.2s linear;
 -moz-box-shadow: 2px 2px 4px 0px #454545;
 -webkit-box-shadow:  2px 2px 4px 0px #454545;
 box-shadow: 2px 2px 4px 0px #454545;
@@ -109,10 +109,10 @@ opacity: .5;
   padding: 0 1vw;
   text-align: center;
 
-  -webkit-transition:all 0.5s linear;
-  -moz-transition:all 0.5s linear;
-  -o-transition:all 0.5s linear;
-  transition:all 0.5s linear;
+  -webkit-transition:all 0.2s linear;
+  -moz-transition:all 0.2s linear;
+  -o-transition:all 0.2s linear;
+  transition:all 0.2s linear;
   -moz-box-shadow: 2px 2px 4px 0px #454545;
   -webkit-box-shadow:  2px 2px 4px 0px #454545;
   box-shadow: 2px 2px 4px 0px #454545;
