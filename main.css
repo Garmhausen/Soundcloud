@@ -92,8 +92,7 @@ opacity: .5;
   display: none;
   flex-direction:column;
   align-items: center;
-
-
+  margin-top: 0;
 }
 
 #stream-player {
@@ -162,7 +161,7 @@ opacity: .5;
 #tracks {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin-top: 40px;
+  margin-top: 0px;
   width: 90vw;
 }
 

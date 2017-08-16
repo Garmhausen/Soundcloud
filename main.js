@@ -5,8 +5,6 @@ let submit = document.getElementById('submitButton');
 let resultsWrapper = document.getElementById('results');
 let player = document.getElementById('stream-player');
 let artists = document.getElementById('artists');
-let tracks = document.getElementById('tracks');
-
 //  These are needed for the CSS animations
 let searchWrapper = document.getElementById('search');
 let transportWrapper = document.getElementById('transport');
